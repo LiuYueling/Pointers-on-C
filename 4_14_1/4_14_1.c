@@ -2,35 +2,52 @@
 #include <stdlib.h>
 #include <math.h>
 
-/*é€’å½’æ³•*/
-// double mysqrt(double a,double x0)
-// {
-	// double x1;
+// double b;
+
+double mysqrt(double a, double x1)
+{
+	double x0;
 	
-	// x1 = (x0+a/x0)/2.0;
-	// if(fabs(x1-x0) > pow(10, -5))
-		// return mysqrt(a,x1);
-	// else
-		// return x1;
-// }
+	/*µİ¹é·¨*/
+	{
+		x0 = x1;
+		x1 = (x0+a/x0)/2.0;
+		if(fabs(x1-x0) > pow(10, -15))
+			return mysqrt(a, x1);
+		else
+			return x1;
+	}
+	
+	// /*µü´ú·¨*/
+	// {
+		// do 
+		// {
+			// x0 = x1;
+			// x1 = (x0 + a/x0)/2.0;
+		// } while(fabs(x1-x0) > pow(10, -15));
+		// return 	x1;
+	// }
+}
 
 int main()
 {
-	double x1, x2;
-    float a;
+    double a;
 	
-	/*è¿­ä»£æ³•*/
-    scanf("%f", &a);
-    x2 = 1.0;
-    do 
-    {
-        x1 = x2;
-        x2 = (x1 + a/x1)/2;
-    } while (fabs(x1-x2) > pow(10, -5));
-    printf("value:%lf \r\n", x2);
+	printf("ÊäÈëÇóÆ½·½¸ùµÄÖµ:");
+    scanf("%lf", &a);
 	
-	/*é€’å½’æ³•*/
-	//printf("value:%lf \r\n", mysqrt(a, 1.0));
+	// printf("ÊäÈëÇóÆ½·½¸ùµÄ¾«¶È:");
+    // scanf("%lf", &b);
+	
+	/*ÊäÈëÓĞĞ§ĞÔÅĞ¶Ï*/
+	if(a < 0)
+	{
+		printf("ÊäÈë´íÎó");
+		system("pause");
+		return 0;
+	}
+	
+	printf("sqrt(%lf) = %.15lf \r\n", a, mysqrt(a, 0.1));
 	system("pause");
 	
 	return 0;
