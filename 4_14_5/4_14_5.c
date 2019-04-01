@@ -49,7 +49,7 @@ void free_String_List(void)
 
 int main()
 {
-	int list_len,i,j;
+	int i,flag;
 	
 	Scanf_String_List();
 	
@@ -60,11 +60,18 @@ int main()
 	}
 	printf("******************************·Ö½çÏß******************************\n");
 	
-	
-	for(list_len=1; *(Str_List + list_len) != 0; list_len++);
-	{
-			
-		// strcmmp(*(Str_List + list_len - 1), *(Str_List + list_len))
+	flag = 1;
+	for(i=1; *(Str_List + i) != 0; i++)
+	{	
+		if(strcmp(*(Str_List + i - 1), *(Str_List + i)) == 0)
+		{
+			if(flag == 1) puts(*(Str_List + i));
+			flag = 0;
+		}
+		else
+		{
+			flag = 1;
+		}
 	}
 	system("pause");
 	free_String_List();
